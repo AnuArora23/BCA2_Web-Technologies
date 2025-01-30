@@ -1,0 +1,26 @@
+<htm><body><script>
+    // Function to add two numbers
+function addTwoNumbers() {
+    // Read two numbers from the user using prompt
+    let num1 = parseFloat(prompt("Enter the first number:"));
+    let num2 = parseFloat(prompt("Enter the second number:"));
+
+    // Validate the inputs
+    if (isNaN(num1) || isNaN(num2)) {
+        console.log("Please enter valid numbers.");
+        return;
+    }
+
+    // Calculate the total
+    let total = num1 + num2;
+
+    // Print the total
+    //console.log("The total of the two numbers is: " + total);
+    alert("The total of the two numbers is: " + total); // Display result in an alert box
+}
+
+// Call the function
+
+</script>
+<button onclick="addTwoNumbers();">Add Numbers</button>
+</body></html>

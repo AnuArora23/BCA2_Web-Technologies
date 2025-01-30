@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Example</title>
+</head>
+<body>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="displayGreeting()">Submit</button>
+    <p id="greeting"></p>
+
+    <script>
+        function displayGreeting() {
+            let name = document.getElementById("nameInput").value;
+            document.getElementById("greeting").textContent = "Hello, " + name + "!";
+        }
+    </script>
+</body>
+</html>
