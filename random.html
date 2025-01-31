@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number</title>
+</head>
+<body>
+    <h1>Generate a Random Number</h1>
+    <button onclick="generateRandom()">Generate Random Number</button>
+    <p id="randomOutput"></p>
+
+    <script>
+        function generateRandom() {
+            const randomNum = Math.floor(Math.random() * 10000) + 1; // Random number between 1 and 100
+            document.getElementById("randomOutput").innerText = `Random Number: ${randomNum}`;
+        }
+    </script>
+</body>
+</html>
