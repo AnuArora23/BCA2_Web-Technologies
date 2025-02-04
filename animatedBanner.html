@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Banner</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .banner-text {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            animation: slideBanner 30s linear infinite;
+        }
+        @keyframes slideBanner {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <div class="banner-text">Welcome to Our Website! Enjoy a Great Experience.</div>
+    </div>
+
+</body>
+</html>

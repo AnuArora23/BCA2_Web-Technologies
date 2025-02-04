@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+        .carousel-container {
+            position: relative;
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .carousel {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .prev:hover, .next:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* Dots Indicator */
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background: gray;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="pic1.jpg" alt="Slide 1">
+            <img src="pic2.jpg" alt="Slide 2">
+            <img src="pic3.jpg" alt="Slide 3">
+            <img src="pic5.jpg" alt="Slide 4">
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots"></div>
+    </div>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll(".carousel img");
+        const totalSlides = slides.length;
+        const carousel = document.querySelector(".carousel");
+        const dotsContainer = document.querySelector(".dots");
+
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            let dot = document.createElement("div");
+            dot.classList.add("dot");
+            if (i === 0) dot.classList.add("active");
+            dot.addEventListener("click", () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlide(n) {
+            index = (n + totalSlides) % totalSlides;
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[index].classList.add("active");
+        }
+
+        function prevSlide() { showSlide(index - 1); }
+        function nextSlide() { showSlide(index + 1); }
+        function goToSlide(n) { showSlide(n); }
+
+        document.querySelector(".prev").addEventListener("click", prevSlide);
+        document.querySelector(".next").addEventListener("click", nextSlide);
+
+        // Auto slide
+        setInterval(nextSlide, 3000);
+    </script>
+
+</body>
+</html>
